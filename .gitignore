@@ -1,0 +1,53 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+
+# Local environment variables and credentials
+.env
+.env.*
+!.env.example
+secrets/
+credentials*.json
+service-account*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.conectar_db.py
+
+# Local databases and database backups
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.bak
+*_dump.sql
+dump.sql
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Test, type-checker, and build artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

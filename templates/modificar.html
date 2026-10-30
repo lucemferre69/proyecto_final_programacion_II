@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <form class="card" data-id="{{pokemon['id']}}" action="{{ url_for('modificar', id=pokemon['id']) }}" method="POST">
+            <div class="foto-modificar">
+            <img src="{{pokemon['foto']}}" alt="{{pokemon['nombre']}}">
+            <input type="text" value="{{pokemon['foto']}}" name="url_foto" required>
+            </div>
+            <h3 class="id_poke">#{{pokemon['id']}}</h3>
+            <div class="info">
+            <input type="text" class="nombre" value="{{pokemon['nombre']}}" name="nombre" required>
+            <div>
+            {% if pokemon['tipo_2'] != None %}
+            <select class="tipo_1 {{pokemon['tipo_1'].lower()}}" name="tipo_1" style="width: 45%; border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
+                <option value="normal">NORMAL</option>
+                <option value="fuego">FUEGO</option>
+                <option value="agua">AGUA</option>
+                <option value="electrico">ELECTRICO</option>
+                <option value="planta">PLANTA</option>
+                <option value="hielo">HIELO</option>
+                <option value="lucha">LUCHA</option>
+                <option value="veneno">VENENO</option>
+                <option value="tierra">TIERRA</option>
+                <option value="volador">VOLADOR</option>
+                <option value="psiquico">PSIQUICO</option>
+                <option value="bicho">BICHO</option>
+                <option value="roca">ROCA</option>
+                <option value="fantasma">FANTASMA</option>
+                <option value="dragon">DRAGON</option>
+                <option value="siniestro">SINIESTRO</option>
+                <option value="acero">ACERO</option>
+                <option value="hada">HADA</option>
+            </select>
+            <select type="text" class="tipo_2 {{pokemon['tipo_2'].lower()}}" name="tipo_2">
+                <option value="normal">NORMAL</option>
+                <option value="fuego">FUEGO</option>
+                <option value="agua">AGUA</option>
+                <option value="electrico">ELECTRICO</option>
+                <option value="planta">PLANTA</option>
+                <option value="hielo">HIELO</option>
+                <option value="lucha">LUCHA</option>
+                <option value="veneno">VENENO</option>
+                <option value="tierra">TIERRA</option>
+                <option value="volador">VOLADOR</option>
+                <option value="psiquico">PSIQUICO</option>
+                <option value="bicho">BICHO</option>
+                <option value="roca">ROCA</option>
+                <option value="fantasma">FANTASMA</option>
+                <option value="dragon">DRAGON</option>
+                <option value="siniestro">SINIESTRO</option>
+                <option value="acero">ACERO</option>
+                <option value="hada">HADA</option>
+            </select>
+            {% else %}
+            <select class="tipo_1 {{pokemon['tipo_1'].lower()}}" name="tipo_1" style="width: 90%; border-radius: 50px;" required>
+                <option value="normal">NORMAL</option>
+                <option value="fuego">FUEGO</option>
+                <option value="agua">AGUA</option>
+                <option value="electrico">ELECTRICO</option>
+                <option value="planta">PLANTA</option>
+                <option value="hielo">HIELO</option>
+                <option value="lucha">LUCHA</option>
+                <option value="veneno">VENENO</option>
+                <option value="tierra">TIERRA</option>
+                <option value="volador">VOLADOR</option>
+                <option value="psiquico">PSIQUICO</option>
+                <option value="bicho">BICHO</option>
+                <option value="roca">ROCA</option>
+                <option value="fantasma">FANTASMA</option>
+                <option value="dragon">DRAGON</option>
+                <option value="siniestro">SINIESTRO</option>
+                <option value="acero">ACERO</option>
+                <option value="hada">HADA</option>
+            </select>
+            <!----Provisorio-->
+            <input class="nose" type="hidden" name="tipo_2" value='veneno'>
+            {% endif %}
+            </div>
+            <button type="submit" class="enviar">Guardar</button>
+            </div>
+        </form>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex | Proyecto Final</title>
+    <link rel="icon" href="../static/img/pokeball-icon.png" type="image/png">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <script src="../static/js/index.js" defer></script>
+</head>
+<body>
+    <div class="borde">
+        <div class="borde-2">
+            <span class="c1"><img src="../static/img/boton-de-encendido.png"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span>
+        </div>
+    </div>
+    <div class="muestra">
+        <div class="pantalla"></div>
+        {% block content %}{% endblock %}
+    </div>
+    <div class="botones-crud">
+        <a class="agregar" href="{{ url_for ('agregar')}}">Agregar</a>
+        <a class="modificar" type="submit">Modificar</a>
+        <a class="eliminar" href="{{ url_for ('eliminar')}}">Eliminar</a>
+    </div>
+    <div class="botones-agrupar">
+        <button data-num="1">x1</button>
+        <button data-num="2">x2</button>
+        <button data-num="3">x3</button>
+        <button data-num="4">x4</button>
+    </div>
+</body>
+</html>
