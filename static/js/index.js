@@ -88,32 +88,43 @@ if (window.location.href.includes('modificar')){
 
 const select = document.querySelectorAll("select")
 
-//select.forEach((select) =>{
-//  const opciones = select.querySelectorAll("option");
-//  opciones.forEach((option) => {
-//  if (select.classList.contains(option.value)){
-//    option.selected = true;
-//  }
-//  option.classList.add(option.value);
-//  if (option.selected){
-//    let selectedOption = option;
-//    return selectedOption
-//  }
-//});
-//  select.addEventListener('change', (event) => {
-//    select.classList.remove(select.classList.item(1));
-//    select.classList.add(event.target.value);
-//  })
-//})
+select.forEach((select) =>{
+  const opciones = select.querySelectorAll("option");
+  opciones.forEach((option) => {
+  if (select.classList.contains(option.value)){
+    option.selected = true;
+  }
+  option.classList.add(option.value);
+  if (option.selected){
+    let selectedOption = option;
+    return selectedOption
+  }
+});
+  select.addEventListener('change', (event) => {
+    select.classList.remove(select.classList.item(1));
+    select.classList.add(event.target.value);
+  })
+})
 
-const btnMenos = document.querySelector(".btn-menos");
+const btnTipo2 = document.querySelector(".btn-tipo-2");
 const contSelect = document.querySelector(".cont-select");
 const select2 = contSelect.querySelector(".tipo_2")
-btnMenos.addEventListener('click', () =>{
-    select2.remove();
-    const inputHidden = document.createElement('input');
-    inputHidden.type = 'hidden';
-    inputHidden.value = '';
-    inputHidden.name = "tipo_2";
-    contSelect.append(inputHidden);
+const inputHidden = document.querySelector('.input-hidden');
+inputHidden.value = '';
+
+btnTipo2.addEventListener('click', () =>{
+  if (btnTipo2.classList.contains("mas")){
+    select2.name = 'tipo_2';
+    inputHidden.name = ''
+    btnTipo2.classList.add("menos");
+    btnTipo2.classList.remove("mas");
+    btnTipo2.textContent = "-";
+  } else {
+    select2.name = '';
+    inputHidden.name = 'tipo_2';
+    btnTipo2.classList.add("mas");
+    btnTipo2.classList.remove("menos");
+    btnTipo2.textContent = "+";
+  }
+  select2.classList.toggle('hidden');
 })

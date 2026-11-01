@@ -133,9 +133,10 @@ h1 {
     text-align: center;
     overflow-x: hidden;
 }
-.info div {
-    width: 100%;
+.cont-select {
+    width: 90%;
     display: flex;
+    position: relative;
     justify-content: center;
 }
 .tipo_1, .tipo_2 {
@@ -147,18 +148,19 @@ h1 {
     color: white;
     text-transform: uppercase;
     box-shadow: inset 0px 0px 15px -5px white;
+    width: 100%;
 }
 .tipo_1 {
     justify-self: end;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    border-radius: 50px;
+    min-width: 45%;
+    max-width: 90%;
 }
 .tipo_2 {
-    width: 45%;
     justify-self: start;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    border-left-width: 0px;
+    min-width: 45%;
 }
 .planta {
     background-color: #469023;
@@ -368,4 +370,21 @@ h1 {
 
 select {
     border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-tipo-2 {
+    background-color: white;
+    color: black;
+    clip-path: circle(12px);
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    z-index: 4;
+    align-self: center;
 }

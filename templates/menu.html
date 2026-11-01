@@ -12,10 +12,10 @@
             <h4 class="nombre">{{pokemon['nombre']}}</h4>
             <div>
             {% if pokemon['tipo_2'] != None %}
-            <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="width: 45%; border-top-left-radius: 50px; border-bottom-left-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
+            <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="border-top-left-radius: 50px; border-bottom-left-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
             <p class="tipo_2 {{pokemon['tipo_2'].lower()}}"><strong>{{pokemon['tipo_2']}}</strong></p>
             {% else %}
-            <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="width: 90%; border-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
+            <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="border-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
             {% endif %}
             </div>
             </div>
