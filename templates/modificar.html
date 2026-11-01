@@ -9,7 +9,7 @@
             <h3 class="id_poke">#{{pokemon['id']}}</h3>
             <div class="info">
             <input type="text" class="nombre" value="{{pokemon['nombre']}}" name="nombre" required>
-            <div>
+            <div class="cont-select">
             {% if pokemon['tipo_2'] != None %}
             <select class="tipo_1 {{pokemon['tipo_1'].lower()}}" name="tipo_1" style="width: 45%; border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
                 <option value="normal">NORMAL</option>
@@ -50,7 +50,9 @@
                 <option value="siniestro">SINIESTRO</option>
                 <option value="acero">ACERO</option>
                 <option value="hada">HADA</option>
+                <option value="">None</option>
             </select>
+            <button type="button" class="btn-menos">-</button>
             {% else %}
             <select class="tipo_1 {{pokemon['tipo_1'].lower()}}" name="tipo_1" style="width: 90%; border-radius: 50px;" required>
                 <option value="normal">NORMAL</option>

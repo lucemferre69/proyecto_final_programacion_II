@@ -37,6 +37,7 @@ def modificar(id):
             cursor.execute(f'UPDATE pokemons SET nombre="{nombre}", tipo_1 = "{tipo_1}", tipo_2 = "{tipo_2}" WHERE id={id}')
         conexion.commit()
         conexion.close()
+        print(request.form)
         return redirect(url_for('modificar', id = id))
     conexion.close()
     return render_template('modificar.html', pokemon = pokemon)

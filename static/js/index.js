@@ -88,20 +88,32 @@ if (window.location.href.includes('modificar')){
 
 const select = document.querySelectorAll("select")
 
-select.forEach((select) =>{
-  const opciones = select.querySelectorAll("option");
-  opciones.forEach((option) => {
-  if (select.classList.contains(option.value)){
-    option.selected = true;
-  }
-  option.classList.add(option.value);
-  if (option.selected){
-    let selectedOption = option;
-    return selectedOption
-  }
-});
-  select.addEventListener('change', (event) => {
-    select.classList.remove(select.classList.item(1));
-    select.classList.add(event.target.value);
-  })
+//select.forEach((select) =>{
+//  const opciones = select.querySelectorAll("option");
+//  opciones.forEach((option) => {
+//  if (select.classList.contains(option.value)){
+//    option.selected = true;
+//  }
+//  option.classList.add(option.value);
+//  if (option.selected){
+//    let selectedOption = option;
+//    return selectedOption
+//  }
+//});
+//  select.addEventListener('change', (event) => {
+//    select.classList.remove(select.classList.item(1));
+//    select.classList.add(event.target.value);
+//  })
+//})
+
+const btnMenos = document.querySelector(".btn-menos");
+const contSelect = document.querySelector(".cont-select");
+const select2 = contSelect.querySelector(".tipo_2")
+btnMenos.addEventListener('click', () =>{
+    select2.remove();
+    const inputHidden = document.createElement('input');
+    inputHidden.type = 'hidden';
+    inputHidden.value = '';
+    inputHidden.name = "tipo_2";
+    contSelect.append(inputHidden);
 })
