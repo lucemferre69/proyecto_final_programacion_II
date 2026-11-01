@@ -16,8 +16,23 @@ def menu():
     conexion.close()
     return render_template('menu.html', pokemons = pokemons)
 
-@app.route("/agregar")
+@app.route("/agregar", methods=('GET', 'POST'))
 def agregar():
+    if request.method == 'POST':
+        conexion = conectar_db()
+        cursor = conexion.cursor(dictionary=True)
+        id = request.form['id']
+        foto = request.form['url_foto']
+        nombre = request.form['nombre']
+        tipo_1 = request.form['tipo_1']
+        tipo_2 = request.form['tipo_2']
+        if tipo_2 == '':
+            cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{foto}")')
+        else:
+            cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, tipo_2, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{tipo_2}", "{foto}")')
+        conexion.commit()
+        conexion.close()
+        return redirect(url_for('menu'))
     return render_template('agregar.html')
 
 @app.route('/modificar/<id>', methods=('GET', 'POST'))

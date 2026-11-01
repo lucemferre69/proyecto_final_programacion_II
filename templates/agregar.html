@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <form class="card" action="{{ url_for('agregar') }}" method="POST">
+            <div class="foto-modificar">
+            <input type="text" name="url_foto" required>
+            <input type="number" name="id" required>
+            <div class="info">
+            <input type="text" class="nombre" name="nombre" required>
+            <div class="cont-select">
+                <select class="tipo_1 normal" name="tipo_1">
+                    <option value="normal">NORMAL</option>
+                    <option value="fuego">FUEGO</option>
+                    <option value="agua">AGUA</option>
+                    <option value="electrico">ELECTRICO</option>
+                    <option value="planta">PLANTA</option>
+                    <option value="hielo">HIELO</option>
+                    <option value="lucha">LUCHA</option>
+                    <option value="veneno">VENENO</option>
+                    <option value="tierra">TIERRA</option>
+                    <option value="volador">VOLADOR</option>
+                    <option value="psiquico">PSIQUICO</option>
+                    <option value="bicho">BICHO</option>
+                    <option value="roca">ROCA</option>
+                    <option value="fantasma">FANTASMA</option>
+                    <option value="dragon">DRAGON</option>
+                    <option value="siniestro">SINIESTRO</option>
+                    <option value="acero">ACERO</option>
+                    <option value="hada">HADA</option>
+                </select>
+                <select class="tipo_2 normal hidden">
+                    <option value="normal">NORMAL</option>
+                    <option value="fuego">FUEGO</option>
+                    <option value="agua">AGUA</option>
+                    <option value="electrico">ELECTRICO</option>
+                    <option value="planta">PLANTA</option>
+                    <option value="hielo">HIELO</option>
+                    <option value="lucha">LUCHA</option>
+                    <option value="veneno">VENENO</option>
+                    <option value="tierra">TIERRA</option>
+                    <option value="volador">VOLADOR</option>
+                    <option value="psiquico">PSIQUICO</option>
+                    <option value="bicho">BICHO</option>
+                    <option value="roca">ROCA</option>
+                    <option value="fantasma">FANTASMA</option>
+                    <option value="dragon">DRAGON</option>
+                    <option value="siniestro">SINIESTRO</option>
+                    <option value="acero">ACERO</option>
+                    <option value="hada">HADA</option>
+                </select>
+            <input type="hidden" name="tipo_2" class="input-hidden">
+            <button type="button"  class="btn-tipo-2 mas">+</button>
+            </div>
+            <button type="submit" class="enviar">Guardar</button>
+            </div>
+        </form>
+{% endblock %}
