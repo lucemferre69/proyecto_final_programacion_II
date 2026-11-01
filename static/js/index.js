@@ -7,6 +7,8 @@ const c4 = document.querySelector(".c4");
 const cards = document.querySelectorAll(".card");
 const card1 = document.querySelector(".card");
 const modificar = document.querySelector(".modificar");
+const eliminar = document.querySelector(".eliminar");
+
 let encendido = false
 if (window.location.href.endsWith('/') == false){
   encendido = true
@@ -58,6 +60,7 @@ function selectCard(index) {
   let card = document.querySelector('.selected');
   let idSelected = card.dataset.id;
   modificar.href = `/modificar/${idSelected}`;
+  eliminar.href = `/eliminar/${idSelected}`;
 }
 
 cards.forEach((card, index) => {

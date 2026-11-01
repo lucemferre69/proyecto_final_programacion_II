@@ -41,6 +41,16 @@ def modificar(id):
     conexion.close()
     return render_template('modificar.html', pokemon = pokemon)
 
-@app.route("/eliminar")
-def eliminar():
-    return render_template('eliminar.html')
+@app.route("/eliminar/<id>", methods=('GET', 'POST'))
+def eliminar(id):
+    conexion = conectar_db()
+    cursor = conexion.cursor(dictionary=True)
+    cursor.execute(f"SELECT * FROM pokemons WHERE id = {id}")
+    pokemon = cursor.fetchone()
+    if request.method == 'POST':
+        cursor.execute(f"DELETE FROM pokemons WHERE id = {id}")
+        conexion.commit()
+        conexion.close()
+        return redirect(url_for('menu'))
+    conexion.close()
+    return render_template('eliminar.html', pokemon = pokemon)
