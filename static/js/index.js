@@ -19,10 +19,7 @@ if (encendido){
     c2.style.backgroundColor = 'red';
     c3.style.backgroundColor = 'yellow';
     c4.style.backgroundColor = 'green';
-    pantalla.style.animation = 'mostrar-pantalla 3s forwards';
-    setTimeout(()=> {
-       muestra.style.overflowY = 'scroll';
-    }, 3000);
+    pantalla.style.animation = 'mostrar-pantalla 1s forwards';
 }
 
 btnEncendido.addEventListener('click', () =>{

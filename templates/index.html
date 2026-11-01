@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +9,20 @@
     <script src="../static/js/index.js" defer></script>
 </head>
 <body>
-    <div class="borde">
-        <div class="borde-2">
-            <span class="c1"><img src="../static/img/boton-de-encendido.png"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span>
+    <div class="borde-2">
+        <div class="borde">
+            <span class="c1"><img src="../static/img/boton-de-encendido.png"></span>
+            <span class="c2"></span>
+            <span class="c3"></span>
+            <span class="c4"></span>
         </div>
     </div>
     <div class="muestra">
         <div class="pantalla"></div>
         {% block content %}{% endblock %}
+    </div>
+    <div class="herramientas">
+        {% block tools %}{% endblock %}
     </div>
     <div class="botones-crud">
         <a class="agregar" href="{{ url_for ('agregar')}}">Agregar</a>
@@ -29,5 +35,6 @@
         <button data-num="3">x3</button>
         <button data-num="4">x4</button>
     </div>
+    
 </body>
 </html>

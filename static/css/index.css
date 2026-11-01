@@ -1,3 +1,11 @@
+:root {
+    --rojo-pokedex: #DC0A2D;
+    --azul-capsula: #007bff;
+    --rojo-bordes: #960820;
+    --sombras: rgba(0, 0, 0, 0.5);
+    --luces: rgba(255, 255, 255, 0.5);
+}
+
 @keyframes mostrar-pantalla {
     0% {
         opacity: 100%;   
@@ -6,26 +14,75 @@
         opacity: 0%;
     }
 }
+
 body {
-    background-color: #DC0A2D;
+    background-color: var(--rojo-pokedex);
     margin: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
-h1 {
-    color: rgb(208, 206, 206);
-    text-align: center;
-}
-
-.muestra {
-    border: 5px solid #960820;
-    width: 65%;
-    height: 70vh;
-    overflow-y: hidden;
+.borde, .borde-2 {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.borde {
+    height: 10vh;
+    z-index: 900;
+    background-color: var(--rojo-pokedex);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 75% 50%, 100% 50%, 100% 0%);
+}
+.borde-2 {
+    height: 11vh;
+    z-index: 901;
+    background-color: var(--rojo-bordes);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 75% 50%, 100% 50%, 100% 0%);
+}
+.c1 {
+    width: 40px;
+    height: 40px;
+    border: 4px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    background-color: grey;
+    box-shadow: inset 0px 0px 10px 4px var(--luces);
+    cursor: pointer;
+}
+.c2, .c3, .c4 {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 1.5vh;
+    box-shadow: inset 0px 0px 10px 4px var(--luces);
+    background-color: gray;
+}
+.c1 img {
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 20%;
+}
+.c2 {
+    left: 100px;
+}
+.c3 {
+    left: 150px;
+}
+.c4 {
+    left: 200px;
+}
+.muestra {
+    border: 7px solid var(--rojo-bordes);
+    width: 60vw;
+    height: 70vh;
+    overflow-y: scroll;
+    position: fixed;
+    top: 12vh;
+    left: 5vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 70%;
@@ -33,10 +90,9 @@ h1 {
     background-image: url(../img/fondo.jpg);
     background-position: center;
     background-size: cover;
-    box-shadow: 0px 4px 3px 5px rgba(0, 0, 0, 0.379);
-    scrollbar-color: rgba(197, 2, 2, 0.232) rgba(255, 0, 0, 0.237);
+    box-shadow: inset 0px 0px 10px 5px var(--sombras);
     scrollbar-width: none;
-    overflow-x: hidden;
+    gap: 5px;
 }
 .pantalla {
     background-color: black;
@@ -46,7 +102,6 @@ h1 {
     z-index: 999;
 }
 .card {
-    background-color: rgba(255, 255, 255, 0.148);
     color: rgb(15, 14, 14);
     display: flex;
     justify-self: center;
@@ -55,36 +110,51 @@ h1 {
     width: 100%;
     box-sizing: border-box;
     height: 100%;
-    box-shadow: inset 0px 0px 20px -5px rgba(0, 0, 0, 0.353);
     flex-direction: column;
     outline: none;
     position: relative;
     cursor: pointer;
+    border-radius: 0px 0px 7px 7px;
 }
-
+.capsule {
+    height: 17%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    box-shadow: inset 0 3px 15px -5px rgba(0, 0, 0, 0.5), inset 0 -3px 15px -5px rgba(0, 0, 0, 0.5);
+}
+.capsule span {
+    background-color: var(--azul-capsula);
+    width: 100%;
+    height: 35%;
+    box-shadow: inset 0px 0px 15px 2px rgba(0, 0, 0, 1);
+}
 .card.selected, .card:focus {
   border-color: #007bff;
   background-color: #e6f2ffa4;
   transform: scale(1.01);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
-
-.info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 40%;
-    background-color: slategrey;
-    box-shadow: inset -15px -15px 70px -5px skyblue;
-}
 .foto {
     width: 100%;
-    height: 60%;
-    box-shadow: inset 0px 0px 20px 2px #3494f35a;
+    height: 51%;
     position: relative;
-    background-color: #fcfcfc35;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    box-shadow: inset 15px 0 15px -5px rgba(0, 0, 0, 0.3), inset -15px 0 15px -5px rgba(0, 0, 0, 0.3);
+}
+.tipos {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    background-color: var(--azul-capsula);
+    box-shadow: inset 0px 0px 15px -5px var(--sombras);
 }
 .foto img {
     max-height: 100%;
@@ -98,7 +168,6 @@ h1 {
 .id_poke, .nombre, .tipo_1, .tipo_2 {
     margin: 0;
 }
-
 .id_poke {
     text-align: start;
     align-self: center;
@@ -106,32 +175,31 @@ h1 {
     font-size: 20px;
     font-style: italic;
     color: white;
-    background-color: rgb(245, 116, 41);
+    background-color: var(--rojo-pokedex);
     border: 3px solid #ffffff;
     padding: 5px;
     width: fit-content;
     border-radius: 7px;
     position: absolute;
-    top: 5px;
-    left: 5px;
-    box-shadow: inset 0px 0px 10px -5px black;
-}
-
-.nombre {
-    grid-column: 1 / 5;
-    font-size: 20px;
-    justify-self: center;
-    width: fit-content;
     align-self: center;
+    justify-self: center;
+    box-shadow: 0px 0px 10px 4px var(--sombras);
+}
+.nombre {
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+    width: fit-content;
     background-color: white;
-    border: 3px solid #C82101;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border: 3px solid var(--rojo-pokedex);
+    border-radius: 20px 7px 20px 7px;
     box-sizing: border-box;
+    font-size: 20px;
     padding: 5px;
-    box-shadow: inset 0px 0px 20px -5px black;
+    box-shadow: 0px 0px 10px 4px var(--sombras);
     text-align: center;
-    overflow-x: hidden;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 .cont-select {
     width: 90%;
@@ -140,27 +208,23 @@ h1 {
     justify-content: center;
 }
 .tipo_1, .tipo_2 {
-    align-self: center;
     padding: 5px 0;
     box-sizing: border-box;
     text-align: center;
     border: 2px solid white;
     color: white;
     text-transform: uppercase;
-    box-shadow: inset 0px 0px 15px -5px white;
-    width: 100%;
+    box-shadow: inset 0px 0px 15px 4px var(--luces), 0px 0px 10px 4px var(--sombras);
+    height: fit-content;
 }
 .tipo_1 {
-    justify-self: end;
     border-radius: 50px;
-    min-width: 45%;
-    max-width: 90%;
+    min-width: 40%;
+    max-width: 80%;
 }
 .tipo_2 {
-    justify-self: start;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    min-width: 45%;
+    border-radius: 50px;
+    min-width: 40%;
 }
 .planta {
     background-color: #469023;
@@ -216,69 +280,8 @@ h1 {
 .dragon {
     background-color: #715DDA;
 }
-
-.borde, .borde-2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.borde {
-    height: 14vh;
-    z-index: 901;
-    background-color: #960820;
-    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 75% 50%, 100% 50%, 100% 0%);
-}
-.borde-2 {
-    height: 13vh;
-    z-index: 900;
-    background-color: #DC0A2D;
-    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 75% 50%, 100% 50%, 100% 0%);
-}
-
-.c2, .c3, .c4 {
-    width: 20px;
-    height: 20px;
-    border: 2px solid black;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    box-shadow: inset 0px 0px 12px -5px white;
-    background-color: gray;
-}
-
-.c1 {
-    width: 40px;
-    height: 40px;
-    border: 4px solid white;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: grey;
-    box-shadow: inset 0px 0px 12px -5px white;
-    cursor: pointer;
-}
-
-.c1 img {
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 20%;
-}
-.c2 {
-    left: 100px;
-}
-.c3 {
-    left: 150px;
-}
-.c4 {
-    left: 200px;
-}
-
 .botones-crud {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: fixed;
     left: 2%;
@@ -316,19 +319,18 @@ h1 {
 
 .botones-agrupar {
     position: fixed;
-    right: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
+    left: 1vw;
+    top: 15vh;
     flex-direction: column;
+    display: flex;
     justify-content: space-between;
-    height: 40vh;
+    height: 30vh;
 }
 
 .botones-agrupar button {
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 50%;
-    padding: 10px;
+    padding: 7px;
     border: none;
     border: 4px solid black;
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.266);
