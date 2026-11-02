@@ -16,7 +16,7 @@ def menu():
     conexion.close()
     return render_template('menu.html', pokemons = pokemons)
 
-@app.route("/agregar", methods=('GET', 'POST'))
+@app.route("/menu/agregar", methods=('GET', 'POST'))
 def agregar():
     if request.method == 'POST':
         conexion = conectar_db()
@@ -35,7 +35,7 @@ def agregar():
         return redirect(url_for('menu'))
     return render_template('agregar.html')
 
-@app.route('/modificar/<id>', methods=('GET', 'POST'))
+@app.route('/menu/modificar/<id>', methods=('GET', 'POST'))
 def modificar(id):
     conexion = conectar_db()
     cursor = conexion.cursor(dictionary=True)
@@ -56,7 +56,7 @@ def modificar(id):
     conexion.close()
     return render_template('modificar.html', pokemon = pokemon)
 
-@app.route("/eliminar/<id>", methods=('GET', 'POST'))
+@app.route("/menu/eliminar/<id>", methods=('GET', 'POST'))
 def eliminar(id):
     conexion = conectar_db()
     cursor = conexion.cursor(dictionary=True)
@@ -69,3 +69,15 @@ def eliminar(id):
         return redirect(url_for('menu'))
     conexion.close()
     return render_template('eliminar.html', pokemon = pokemon)
+
+@app.route("/menu/selected=<id>", methods=('GET', 'POST'))
+def seleccionado(id):
+    conexion = conectar_db()
+    cursor = conexion.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM pokemons")
+    pokemons = cursor.fetchall()
+
+    cursor.execute(f"SELECT * FROM pokemons WHERE id = {id}")
+    pokemon = cursor.fetchone()
+    conexion.close()
+    return render_template('selected.html', pokemon = pokemon, pokemons = pokemons)

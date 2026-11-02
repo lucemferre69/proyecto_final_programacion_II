@@ -9,6 +9,8 @@
     <script src="../static/js/index.js" defer></script>
 </head>
 <body>
+    <nav>
+    </nav>
     <div class="borde-2">
         <div class="borde">
             <span class="c1"><img src="../static/img/boton-de-encendido.png"></span>
@@ -22,12 +24,8 @@
         {% block content %}{% endblock %}
     </div>
     <div class="herramientas">
+        <div class="pantalla"></div>
         {% block tools %}{% endblock %}
-    </div>
-    <div class="botones-crud">
-        <a class="agregar" href="{{ url_for ('agregar')}}">Agregar</a>
-        <a class="modificar">Modificar</a>
-        <a class="eliminar">Eliminar</a>
     </div>
     <div class="botones-agrupar">
         <button data-num="1">x1</button>

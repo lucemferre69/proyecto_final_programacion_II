@@ -1,11 +1,10 @@
 const btnEncendido = document.querySelector(".c1");
 const muestra = document.querySelector(".muestra");
-const pantalla = document.querySelector(".pantalla");
+const pantallas = document.querySelectorAll(".pantalla");
 const c2 = document.querySelector(".c2");
 const c3 = document.querySelector(".c3");
 const c4 = document.querySelector(".c4");
 const cards = document.querySelectorAll(".card");
-const card1 = document.querySelector(".card");
 const modificar = document.querySelector(".modificar");
 const eliminar = document.querySelector(".eliminar");
 
@@ -19,7 +18,9 @@ if (encendido){
     c2.style.backgroundColor = 'red';
     c3.style.backgroundColor = 'yellow';
     c4.style.backgroundColor = 'green';
-    pantalla.style.animation = 'mostrar-pantalla 1s forwards';
+    pantallas.forEach((pantalla) =>{
+      pantalla.style.animation = 'mostrar-pantalla 1s forwards';
+    })
 }
 
 btnEncendido.addEventListener('click', () =>{
@@ -47,36 +48,37 @@ btnAgrupar.forEach((button) =>{
     })
 })
 
-
 function selectCard(index) {
   cards.forEach(card => card.classList.remove('selected'));
-
   currentIndex = index;
   cards[currentIndex].classList.add('selected');
   cards[currentIndex].focus();
-  let card = document.querySelector('.selected');
-  let idSelected = card.dataset.id;
-  modificar.href = `/modificar/${idSelected}`;
-  eliminar.href = `/eliminar/${idSelected}`;
 }
 
+function selectId() {
+  let id = document.querySelector('.selected').dataset.id;
+  return id
+}
 cards.forEach((card, index) => {
   card.addEventListener('click', () => {
     selectCard(index);
+    let idSelected = selectId();
+    console.log(window.location.href);
+    window.location.href = `/menu/selected=${idSelected}`;
   });
 });
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowRight') {
-    if (currentIndex < cards.length - 1) {
-      selectCard(currentIndex + 1);
-    }
-  } else if (event.key === 'ArrowLeft') {
-    if (currentIndex > 0) {
-      selectCard(currentIndex - 1);
-    }
-  }
-});
+//document.addEventListener('keydown', (event) => {
+//  if (event.key === 'ArrowRight') {
+//    if (currentIndex < cards.length - 1) {
+//      selectCard(currentIndex + 1);
+//    }
+//  } else if (event.key === 'ArrowLeft') {
+//    if (currentIndex > 0) {
+//     selectCard(currentIndex - 1);
+//    }
+//  }
+//});
 
 if (window.location.href.includes('modificar')){
   muestra.style.display = 'flex';

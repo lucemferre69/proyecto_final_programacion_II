@@ -1,0 +1,28 @@
+{% extends 'menu.html' %}
+{% block tools %}
+    <div class="pokemon-selected" tabindex="0" data-id="{{pokemon['id']}}">
+            <div class="capsule">
+                <span></span>
+                <h3 class="id_poke">#{{pokemon['id']}}</h3>
+            </div>
+            <div class="foto">
+                <img src="{{pokemon['foto']}}" alt="{{pokemon['nombre']}}">
+            </div>
+            <div class="capsule">
+                <span></span>
+                <h4 class="nombre">{{pokemon['nombre']}}</h4>
+            </div>
+            <div class="tipos">
+                {% if pokemon['tipo_2'] != None %}
+                    <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="border-top-left-radius: 50px; border-bottom-left-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
+                    <p class="tipo_2 {{pokemon['tipo_2'].lower()}}"><strong>{{pokemon['tipo_2']}}</strong></p>
+                    {% else %}
+                    <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="border-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
+                    {% endif %}
+            </div>
+        </div>
+        <div class="botones-crud">
+        <a class="modificar">Modificar</a>
+        <a class="eliminar">Eliminar</a>
+    </div>
+{% endblock %}
