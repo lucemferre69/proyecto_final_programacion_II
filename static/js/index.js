@@ -30,11 +30,6 @@ btnEncendido.addEventListener('click', () =>{
     window.location.href = '/menu';
     }
 })
-
-const btnX1 = document.querySelector(".x1");
-const btnX2 = document.querySelector(".x2");
-const btnX3 = document.querySelector(".x3");
-const btnX4 = document.querySelector(".x4");
 const contAgrupar = document.querySelector(".botones-agrupar");
 const btnAgrupar = contAgrupar.querySelectorAll("button");
 
@@ -80,14 +75,9 @@ cards.forEach((card, index) => {
 //  }
 //});
 
-if (window.location.href.includes('modificar')){
-  muestra.style.display = 'flex';
-  
-}
-
-const select = document.querySelectorAll("select")
-
-select.forEach((select) =>{
+if (window.location.href.includes("modificar")){
+  const select = document.querySelectorAll("select")
+  select.forEach((select) =>{
   const opciones = select.querySelectorAll("option");
   opciones.forEach((option) => {
   if (select.classList.contains(option.value)){
@@ -105,13 +95,13 @@ select.forEach((select) =>{
   })
 })
 
-const btnTipo2 = document.querySelector(".btn-tipo-2");
-const contSelect = document.querySelector(".cont-select");
-const select2 = contSelect.querySelector(".tipo_2")
-const inputHidden = document.querySelector('.input-hidden');
-inputHidden.value = '';
+  const btnTipo2 = document.querySelector(".btn-tipo-2");
+  const contSelect = document.querySelector(".cont-select");
+  const select2 = contSelect.querySelector(".tipo_2")
+  const inputHidden = document.querySelector('.input-hidden');
+  inputHidden.value = '';
 
-btnTipo2.addEventListener('click', () =>{
+  btnTipo2.addEventListener('click', () =>{
   if (btnTipo2.classList.contains("mas")){
     select2.name = 'tipo_2';
     inputHidden.name = ''
@@ -127,3 +117,6 @@ btnTipo2.addEventListener('click', () =>{
   }
   select2.classList.toggle('hidden');
 })
+}
+
+

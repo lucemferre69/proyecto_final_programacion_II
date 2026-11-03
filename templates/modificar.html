@@ -1,63 +1,71 @@
-{% extends 'index.html' %}
+{% extends 'menu.html' %}
 
-{% block content %}
-    <form class="card" data-id="{{pokemon['id']}}" action="{{ url_for('modificar', id=pokemon['id']) }}" method="POST">
-            <div class="foto-modificar">
-            <img src="{{pokemon['foto']}}" alt="{{pokemon['nombre']}}">
-            <input type="text" value="{{pokemon['foto']}}" name="url_foto" required>
-            </div>
+{% block tools %}
+    <form action="{{ url_for('modificar', id=pokemon['id']) }}" method="POST">
+    <div class="pokemon-selected">
+        <div class="capsule">
+            <span></span>
             <h3 class="id_poke">#{{pokemon['id']}}</h3>
-            <div class="info">
+        </div>
+        <div class="foto">
+            <input type="text" value="{{pokemon['foto']}}" name="url_foto" required>
+            <img src="{{pokemon['foto']}}" alt="{{pokemon['nombre']}}">
+        </div>
+        <div class="capsule">
+            <span></span>
             <input type="text" class="nombre" value="{{pokemon['nombre']}}" name="nombre" required>
-            <div class="cont-select">
-                <select class="tipo_1 {{pokemon['tipo_1'].lower()}}" name="tipo_1">
-                    <option value="normal">NORMAL</option>
-                    <option value="fuego">FUEGO</option>
-                    <option value="agua">AGUA</option>
-                    <option value="electrico">ELECTRICO</option>
-                    <option value="planta">PLANTA</option>
-                    <option value="hielo">HIELO</option>
-                    <option value="lucha">LUCHA</option>
-                    <option value="veneno">VENENO</option>
-                    <option value="tierra">TIERRA</option>
-                    <option value="volador">VOLADOR</option>
-                    <option value="psiquico">PSIQUICO</option>
-                    <option value="bicho">BICHO</option>
-                    <option value="roca">ROCA</option>
-                    <option value="fantasma">FANTASMA</option>
-                    <option value="dragon">DRAGON</option>
-                    <option value="siniestro">SINIESTRO</option>
-                    <option value="acero">ACERO</option>
-                    <option value="hada">HADA</option>
-                </select>
-                <select {% if pokemon['tipo_2'] != None %} class="tipo_2 {{pokemon['tipo_2'].lower()}}" {% else %} class="tipo_2 normal hidden" {% endif %} name="tipo_2">
-                    <option value="normal">NORMAL</option>
-                    <option value="fuego">FUEGO</option>
-                    <option value="agua">AGUA</option>
-                    <option value="electrico">ELECTRICO</option>
-                    <option value="planta">PLANTA</option>
-                    <option value="hielo">HIELO</option>
-                    <option value="lucha">LUCHA</option>
-                    <option value="veneno">VENENO</option>
-                    <option value="tierra">TIERRA</option>
-                    <option value="volador">VOLADOR</option>
-                    <option value="psiquico">PSIQUICO</option>
-                    <option value="bicho">BICHO</option>
-                    <option value="roca">ROCA</option>
-                    <option value="fantasma">FANTASMA</option>
-                    <option value="dragon">DRAGON</option>
-                    <option value="siniestro">SINIESTRO</option>
-                    <option value="acero">ACERO</option>
-                    <option value="hada">HADA</option>
-                </select>
+        </div>
+        <div class="tipos cont-select">
+            <select class="tipo_1 {{pokemon['tipo_1'].lower()}}" name="tipo_1">
+                <option value="normal">NORMAL</option>
+                <option value="fuego">FUEGO</option>
+                <option value="agua">AGUA</option>
+                <option value="electrico">ELECTRICO</option>
+                <option value="planta">PLANTA</option>
+                <option value="hielo">HIELO</option>
+                <option value="lucha">LUCHA</option>
+                <option value="veneno">VENENO</option>
+                <option value="tierra">TIERRA</option>
+                <option value="volador">VOLADOR</option>
+                <option value="psiquico">PSIQUICO</option>
+                <option value="bicho">BICHO</option>
+                <option value="roca">ROCA</option>
+                <option value="fantasma">FANTASMA</option>
+                <option value="dragon">DRAGON</option>
+                <option value="siniestro">SINIESTRO</option>
+                <option value="acero">ACERO</option>
+                <option value="hada">HADA</option>
+            </select>
+            <select {% if pokemon['tipo_2'] != None %} class="tipo_2 {{pokemon['tipo_2'].lower()}}" {% else %} class="tipo_2 normal hidden" {% endif %} name="tipo_2">
+                <option value="normal">NORMAL</option>
+                <option value="fuego">FUEGO</option>
+                <option value="agua">AGUA</option>
+                <option value="electrico">ELECTRICO</option>
+                <option value="planta">PLANTA</option>
+                <option value="hielo">HIELO</option>
+                <option value="lucha">LUCHA</option>
+                <option value="veneno">VENENO</option>
+                <option value="tierra">TIERRA</option>
+                <option value="volador">VOLADOR</option>
+                <option value="psiquico">PSIQUICO</option>
+                <option value="bicho">BICHO</option>
+                <option value="roca">ROCA</option>
+                <option value="fantasma">FANTASMA</option>
+                <option value="dragon">DRAGON</option>
+                <option value="siniestro">SINIESTRO</option>
+                <option value="acero">ACERO</option>
+                <option value="hada">HADA</option>
+            </select>
             <input type="hidden" name="tipo_2" class="input-hidden">
             {% if pokemon['tipo_2'] != None %}
             <button type="button"  class="btn-tipo-2 menos">-</button>
             {% else %}
             <button type="button"  class="btn-tipo-2 mas">+</button>
             {% endif %}
-            </div>
+        </div>
+        </div>
+        <div class="botones-crud">
             <button type="submit" class="enviar">Guardar</button>
-            </div>
+        </div>
         </form>
 {% endblock %}
