@@ -74,7 +74,7 @@ cards.forEach((card, index) => {
 //  }
 //});
 
-if (window.location.href.includes("modificar")){
+if (window.location.href.includes("modificar") || window.location.href.includes("agregar")){
   const select = document.querySelectorAll("select")
   select.forEach((select) =>{
   const opciones = select.querySelectorAll("option");
@@ -116,6 +116,14 @@ if (window.location.href.includes("modificar")){
   }
   select2.classList.toggle('hidden');
 })
+}
+
+if (window.location.href.includes("agregar")){
+  const imgAgregar = document.querySelector(".foto-agregar")
+  const inputImg = document.querySelector(".input-foto")
+  inputImg.addEventListener('change', (event) => {
+    imgAgregar.src = event.target.value;
+  })
 }
 
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for
 from conectar_db import conectar_db  
 
 app = Flask(__name__) #esta variable tiene el valor del main cuando iniciemos
@@ -18,6 +18,12 @@ def menu():
 
 @app.route("/menu/agregar", methods=('GET', 'POST'))
 def agregar():
+    conexion = conectar_db()
+    cursor = conexion.cursor(dictionary=True)
+    cursor.execute('SELECT * FROM pokemons')
+    pokemons = cursor.fetchall()
+    conexion.close()
+    error = ""
     if request.method == 'POST':
         conexion = conectar_db()
         cursor = conexion.cursor(dictionary=True)
@@ -26,14 +32,22 @@ def agregar():
         nombre = request.form['nombre']
         tipo_1 = request.form['tipo_1']
         tipo_2 = request.form['tipo_2']
-        if tipo_2 == '':
-            cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{foto}")')
+        cursor.execute(f'SELECT nombre FROM pokemons WHERE id = {id}')
+        existente = cursor.fetchone()
+        if existente == None:
+            pass
         else:
-            cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, tipo_2, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{tipo_2}", "{foto}")')
-        conexion.commit()
+            error = f"{existente['nombre']} tiene el ID {id}"
+        if error == "":    
+            if tipo_2 == '':
+                cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{foto}")')
+            else:
+                cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, tipo_2, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{tipo_2}", "{foto}")')
+            conexion.commit()
+            conexion.close()
+            return redirect(url_for('menu'))
         conexion.close()
-        return redirect(url_for('menu'))
-    return render_template('agregar.html')
+    return render_template('agregar.html', pokemons = pokemons, error = error)
 
 @app.route('/menu/modificar=<id>', methods=('GET', 'POST'))
 def modificar(id):

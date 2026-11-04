@@ -106,13 +106,14 @@ nav {
     box-shadow: inset 0px 0px 10px 5px var(--sombras);
     scrollbar-width: none;
     gap: 5px;
+    box-sizing: border-box;
 }
 .pantalla {
     background-color: black;
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 999;
+    z-index: 998;
 }
 .card {
     color: rgb(15, 14, 14);
@@ -129,6 +130,9 @@ nav {
     cursor: pointer;
     border-radius: 0px 0px 7px 7px;
 }
+.card:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
 .capsule {
     height: 17%;
     width: 100%;
@@ -144,12 +148,6 @@ nav {
     width: 100%;
     height: 35%;
     box-shadow: inset 0px 0px 15px 2px rgba(0, 0, 0, 1);
-}
-.card.selected, .card:focus {
-  border-color: #007bff;
-  background-color: #e6f2ffa4;
-  transform: scale(1.01);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
 .foto {
     width: 98%;
@@ -211,6 +209,9 @@ nav {
     align-self: center;
     justify-self: center;
     box-shadow: 0px 0px 10px 4px var(--sombras);
+}
+.id_poke::placeholder{
+    color: rgba(255, 255, 255, 0.5);
 }
 .nombre {
     position: absolute;
@@ -324,9 +325,8 @@ nav {
     text-align: center;
     border: 4px solid var(--rojo-bordes);
 }
-
-.agregar {
-    background-color: green;
+.botones-crud a:hover{
+    background-color: rgba(255, 255, 255, 0.1);
 }
 .botones-agrupar {
     position: fixed;
@@ -350,6 +350,9 @@ nav {
     cursor: pointer;
     text-align: center;
     background-color: white;
+}
+.botones-agrupar button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 form {
     height: 100%;
@@ -391,7 +394,7 @@ select {
 .herramientas {
     position: absolute;
     right: 5vw;
-    top: 11vh;
+    top: 6vh;
     width: 25vw;
     height: 80vh;
     background-color: white;
@@ -403,6 +406,7 @@ select {
     border: 7px solid var(--rojo-bordes);
     scrollbar-width: none;
     gap: 5px;
+    box-sizing: border-box;
 }
 
 .pokemon-selected {
@@ -487,4 +491,40 @@ select {
     border-radius: 20px;
     background-color: white;
     text-align: center;
+}
+
+.agregar {
+    position: absolute;
+    top: 82vh;
+    left: 6vw;
+    border: 4px solid var(--rojo-bordes);
+    z-index: 997;
+    border-top-width: 0;
+    padding: 10px;
+    background-color: var(--rojo-pokedex);
+    color: white;
+    font-size: 20px;
+    box-shadow: inset 0px -2px 10px 2px var(--sombras);
+    box-sizing: border-box;
+    border-radius: 0px 0px 7px 7px;
+    text-decoration: none;
+}
+.agregar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    justify-self: center;
+    background-color: white;
+    border: 2px solid red;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
 }

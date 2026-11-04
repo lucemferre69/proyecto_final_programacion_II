@@ -1,13 +1,21 @@
-{% extends 'index.html' %}
+{% extends 'menu.html' %}
 
-{% block content %}
-    <form class="card" action="{{ url_for('agregar') }}" method="POST">
-            <div class="foto-modificar">
-            <input type="text" name="url_foto" required>
-            <input type="number" name="id" required>
-            <div class="info">
-            <input type="text" class="nombre" name="nombre" required>
-            <div class="cont-select">
+{% block tools %}
+    <form action="{{ url_for('agregar') }}" method="POST">
+        <div class="pokemon-selected">
+            <div class="capsule">
+                <span></span>
+                <input name="id" class="id_poke" type="number" min="1" placeholder="ID Unica" required>
+            </div>
+            <div class="foto">
+                <input class="input-foto" type="text" name="url_foto" placeholder="URL del sprite" required>
+                <img class="foto-agregar">
+            </div>
+            <div class="capsule">
+                <span></span>
+                <input type="text" class="nombre" name="nombre" placeholder="Nombre del Pokémon">
+            </div>
+            <div class="tipos cont-select">
                 <select class="tipo_1 normal" name="tipo_1">
                     <option value="normal">NORMAL</option>
                     <option value="fuego">FUEGO</option>
@@ -51,7 +59,12 @@
             <input type="hidden" name="tipo_2" class="input-hidden">
             <button type="button"  class="btn-tipo-2 mas">+</button>
             </div>
-            <button type="submit" class="enviar">Guardar</button>
             </div>
-        </form>
+        <div class="botones-crud">
+            <button type="submit" class="enviar">Guardar</button>
+        </div>
+        {% if error != "" %}
+                <p class="error">Error: {{error}}</p>
+                {% endif %}
+    </form>
 {% endblock %}
