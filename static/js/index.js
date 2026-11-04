@@ -5,7 +5,6 @@ const c2 = document.querySelector(".c2");
 const c3 = document.querySelector(".c3");
 const c4 = document.querySelector(".c4");
 const cards = document.querySelectorAll(".card");
-const modificar = document.querySelector(".modificar");
 const eliminar = document.querySelector(".eliminar");
 
 let encendido = false

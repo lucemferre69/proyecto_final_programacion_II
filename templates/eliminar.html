@@ -1,22 +1,12 @@
-{% extends 'index.html' %}
+{% extends 'menu.html' %}
 
-{% block content %}
-    <form class="card" data-id="{{pokemon['id']}}" action="{{ url_for('eliminar', id=pokemon['id']) }}" method="POST">
-            <div class="foto">
-            <img src="{{pokemon['foto']}}" alt="{{pokemon['nombre']}}">
-            </div>
-            <h3 class="id_poke">#{{pokemon['id']}}</h3>
-            <div class="info">
-            <h4 class="nombre">{{pokemon['nombre']}}</h4>
-            <div>
-            {% if pokemon['tipo_2'] != None %}
-            <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="width: 45%; border-top-left-radius: 50px; border-bottom-left-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
-            <p class="tipo_2 {{pokemon['tipo_2'].lower()}}"><strong>{{pokemon['tipo_2']}}</strong></p>
-            {% else %}
-            <p class="tipo_1 {{pokemon['tipo_1'].lower()}}" style="width: 90%; border-radius: 50px;"><strong>{{pokemon['tipo_1']}}</strong></p>
-            {% endif %}
-            </div>
-            </div>
-        <button type="submit" class="enviar">Eliminar</button>
+{% block message %}
+    <form class="message" action="{{ url_for('eliminar', id=pokemon['id']) }}" method="POST">
+        <div>
+            <label>¿Eliminar a {{pokemon['nombre']}}?</label>
+            <img src="{{pokemon['foto']}}">
+            <a class="cancelar" type="button" href="/menu/selected={{pokemon['id']}}">No</a>
+            <button type="submit" class="enviar">Si</button>
+        </div>
     </form>
 {% endblock %}

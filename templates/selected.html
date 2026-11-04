@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="botones-crud">
-            <a class="modificar" href="{{url_for('modificar', id = pokemon['id'])}}">Modificar</a>
-            <a class="eliminar">Eliminar</a>
+            <a href="{{url_for('modificar', id = pokemon['id'])}}">Modificar</a>
+            <a href="{{url_for('eliminar', id = pokemon['id'])}}">Eliminar</a>
         </div>
 {% endblock %}
