@@ -127,3 +127,88 @@ if (window.location.href.includes("agregar")){
 }
 
 
+const barraBusqueda = document.querySelector(".buscar-texto")
+
+function filtrarID(event){
+  cards.forEach((card) =>{
+    card.classList.remove("hidden")
+    if (card.dataset.id !== event.target.value){
+      card.classList.add("hidden")
+    }
+  })
+}
+
+function filtrarNombre(event){
+  cards.forEach((card) =>{
+    card.classList.remove("hidden")
+    if (card.dataset.name.includes(event.target.value) === false){
+      card.classList.add("hidden")
+    }
+  })
+}
+barraBusqueda.addEventListener('input', (event) =>{
+  cards.forEach((card) =>{
+    card.classList.remove("hidden")
+  })
+  if (event.target.value === ''){
+    cards.forEach((card) =>{
+      card.classList.remove("hidden")
+    })
+  } else {
+    if (isNaN(parseInt(event.target.value, 10)) === false){
+    filtrarID(event)
+  } else {
+    filtrarNombre(event)
+  }
+  }
+})
+
+barraBusqueda.addEventListener('keydown', (event) =>{
+  if (event.key === 'Backspace'){
+  if (event.target.value === ''){
+    cards.forEach((card) =>{
+      card.classList.remove("hidden")
+    })
+  } else {
+      if (isNaN(parseInt(event.target.value, 10)) === false){
+        filtrarID(event)
+      } else {
+        filtrarNombre(event)
+      }
+    }
+  }
+})
+
+const busquedaCont = document.querySelector(".search-button")
+const contTipos = document.querySelector(".search-contenedor")
+const botonesTipo = contTipos.querySelectorAll("button")
+const btnCont = busquedaCont.querySelector("p")
+let rotate = 0
+const btnLimpiar = document.querySelector(".limpiar-filtros")
+
+btnLimpiar.addEventListener('click', () => {
+  cards.forEach((card) =>{
+    card.classList.remove("hidden")
+    barraBusqueda.value = ''
+  })
+})
+
+btnCont.addEventListener('click', () =>{
+  contTipos.classList.toggle("hidden")
+  rotate += 180
+  btnCont.style.transform = `rotateX(${rotate}deg)`
+})
+
+function filtrarTipo(tipo) {
+  cards.forEach((card) =>{
+    card.classList.remove("hidden")
+    if (card.dataset.tipo.includes(tipo) === false){
+      card.classList.add("hidden")
+    }
+  })
+}
+botonesTipo.forEach((button) =>{
+  button.addEventListener('click', () =>{
+    filtrarTipo(button.classList.item(1))
+  })
+})

@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% block content %}
         {% for pokemon in pokemons %}
-        <div class="card" tabindex="0" data-id="{{pokemon['id']}}">
+        <div class="card" tabindex="0" data-id="{{pokemon['id']}}" data-name="{{pokemon['nombre'].lower()}}" data-tipo="{{pokemon['tipo_1']}},{{pokemon['tipo_2']}}">
             <div class="capsule">
                 <span></span>
                 <h3 class="id_poke">#{{pokemon['id']}}</h3>
