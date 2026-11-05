@@ -39,7 +39,7 @@ def agregar():
         else:
             error = f"{existente['nombre']} tiene el ID {id}"
         if error == "":    
-            if tipo_2 == '':
+            if tipo_2 == '' or tipo_2 == tipo_1:
                 cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{foto}")')
             else:
                 cursor.execute(f'INSERT INTO pokemons (id, nombre, tipo_1, tipo_2, foto) VALUES ({id}, "{nombre}", "{tipo_1}", "{tipo_2}", "{foto}")')
@@ -62,7 +62,7 @@ def modificar(id):
         nombre = request.form['nombre']
         tipo_1 = request.form['tipo_1']
         tipo_2 = request.form['tipo_2']
-        if tipo_2 == '':
+        if tipo_2 == '' or tipo_1 == tipo_2:
             cursor.execute(f'UPDATE pokemons SET nombre="{nombre}", tipo_1 = "{tipo_1}", tipo_2 = NULL, foto = "{foto}" WHERE id={id}')
         else:
             cursor.execute(f'UPDATE pokemons SET nombre="{nombre}", tipo_1 = "{tipo_1}", tipo_2 = "{tipo_2}", foto = "{foto}" WHERE id={id}')
